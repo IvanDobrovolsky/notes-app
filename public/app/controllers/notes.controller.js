@@ -57,7 +57,7 @@
             var newNote = {
                 id: new Date(),
                 text: notes.editor.text,
-                color: "cyan"
+                color: colorService.getRandom()
             };
 
             if(notes.editor.text){

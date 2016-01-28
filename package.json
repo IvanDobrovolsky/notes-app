@@ -9,6 +9,7 @@
   "author": "Ivan Dobrovolsky",
   "license": "ISC",
   "dependencies": {
-    "angular": "^1.4.9"
+    "angular": "^1.4.9",
+    "masonry": "0.0.2"
   }
 }

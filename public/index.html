@@ -19,7 +19,18 @@
     <script src="app/services/api.service.js"></script>
 </head>
 <body ng-app="app" ng-controller="AppController as app">
-    {{app.message}}
-    <main ng-controller="NotesController as notes">{{notes.message}}</main>
+
+    <main ng-controller="NotesController as notes">
+        <div class="notes-editor">
+            <textarea name="notes-editor-input" placeholder="{{notes.editor.placeholder}}" ng-model="notes.editor.text" cols="30" rows="10"></textarea>
+            <button class="notes-editor-button" ng-click="notes.add()">Add</button>
+        </div>
+        <div class="notes">
+            <div class="note" ng-repeat="note in notes.items" style="background-color: {{note.color}};">
+                <span class="delete-note" ng-click="notes.delete($index)"> × </span>
+                <p>{{note.text}}</p>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

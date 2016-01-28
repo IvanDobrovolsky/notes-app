@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes application</title>
+
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!--Including library scripts-->
+    <script src="assets/libs/angular.js"></script>
+
+    <!--Including application scripts-->
+    <script src="app/modules/app.module.js"></script>
+    <script src="app/modules/notes.module.js"></script>
+    <script src="app/controllers/app.controller.js"></script>
+    <script src="app/controllers/notes.controller.js"></script>
+    <script src="app/directives/notes.directive.js"></script>
+    <script src="app/services/color.service.js"></script>
+    <script src="app/services/api.service.js"></script>
+</head>
+<body ng-app="app" ng-controller="AppController as app">
+    {{app.message}}
+    <main ng-controller="NotesController as notes">{{notes.message}}</main>
+</body>
+</html>

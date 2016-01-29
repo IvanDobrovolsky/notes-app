@@ -3,11 +3,11 @@
 
     angular
         .module('notes')
-        .controller('NotesController', ['apiService', 'colorService', 'masonryService', NotesController]);
+        .controller('NotesController', ['apiService', 'colorService', NotesController]);
 
 
 
-    function NotesController(apiService, colorService, masonryService){
+    function NotesController(apiService, colorService){
 
         var notes = this;
 
@@ -51,7 +51,6 @@
 
         notes.delete = function(index){
             notes.items.splice(index, 1);
-            masonryService.update();
         };
 
         notes.add = function(){
@@ -63,7 +62,7 @@
 
             if(notes.editor.text){
                 notes.items.unshift(newNote);
-                masonryService.update();
+                notes.editor.text = "";
             }
 
         }

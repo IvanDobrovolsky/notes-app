@@ -15,10 +15,9 @@
     <script src="app/modules/notes.module.js"></script>
     <script src="app/controllers/app.controller.js"></script>
     <script src="app/controllers/notes.controller.js"></script>
-    <script src="app/directives/notes.directive.js"></script>
+    <script src="app/directives/masonry.directive.js"></script>
     <script src="app/services/color.service.js"></script>
     <script src="app/services/api.service.js"></script>
-    <script src="app/services/masonry.service.js"></script>
 </head>
 <body ng-app="app" ng-controller="AppController as app">
 
@@ -27,10 +26,9 @@
             <textarea name="notes-editor-input" placeholder="{{notes.editor.placeholder}}" ng-model="notes.editor.text" cols="30" rows="10"></textarea>
             <button class="notes-editor-button" ng-click="notes.add()">Add</button>
         </div>
-        <div class="notes">
-            <div class="note" ng-repeat="note in notes.items" style="background-color: {{note.color}};">
+        <div class="notes" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".note"}'>
+            <div class="note" ng-repeat="note in notes.items" style="background-color: {{note.color}};" masonry-note>
                 <span class="delete-note" ng-click="notes.delete($index)"> × </span>
-                <h1>{{$index}}</h1>
                 <p>{{note.text}}</p>
             </div>
         </div>

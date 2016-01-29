@@ -3,14 +3,10 @@
 
     angular
         .module('app')
-        .factory('apiService', [apiServiceFactory]);
+        .factory('apiService', ['$resource', apiServiceFactory]);
 
 
-
-    function apiServiceFactory(){
-
-        return {
-            message: "Api service works..."
-        }
+    function apiServiceFactory($resource){
+        return $resource('/notes/:id', {id: '@_id'}, {});
     }
 }());

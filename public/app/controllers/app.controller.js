@@ -10,6 +10,6 @@
 
         var app = this;
 
-        app.message = 'AppController works';
+        app.title = 'Notes application';
     }
 }());

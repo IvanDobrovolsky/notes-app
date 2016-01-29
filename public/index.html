@@ -20,10 +20,14 @@
     <script src="app/services/api.service.js"></script>
 </head>
 <body ng-app="app" ng-controller="AppController as app">
-
+    <header>
+        <div class="header-title">
+            {{app.title}}
+        </div>
+    </header>
     <main ng-controller="NotesController as notes">
         <div class="notes-editor">
-            <textarea name="notes-editor-input" placeholder="{{notes.editor.placeholder}}" ng-model="notes.editor.text" cols="30" rows="10"></textarea>
+            <textarea class="notes-editor-input" placeholder="{{notes.editor.placeholder}}" ng-model="notes.editor.text" cols="30" rows="5"></textarea>
             <button class="notes-editor-button" ng-click="notes.add()">Add</button>
         </div>
         <div class="notes" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".note"}'>

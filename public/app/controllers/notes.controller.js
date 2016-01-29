@@ -12,7 +12,7 @@
         var notes = this;
 
         notes.editor = {
-            placeholder: "Enter new task here...",
+            placeholder: "Enter new note here...",
             text: ""
         };
 

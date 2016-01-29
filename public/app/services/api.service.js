@@ -3,10 +3,39 @@
 
     angular
         .module('app')
-        .factory('apiService', ['$resource', apiServiceFactory]);
+        .factory('apiService', ['$http', apiServiceFactory]);
 
 
-    function apiServiceFactory($resource){
-        return $resource('/notes/:id', {id: '@_id'}, {});
+    function apiServiceFactory($http){
+
+        var NotesEndpoint = '/notes';
+
+        function getAll(){
+            return $http({
+                method: 'GET',
+                url: NotesEndpoint
+            });
+        }
+
+        function deleteExisting(id){
+            return $http({
+                method: 'DELETE',
+                url: '/notes/' + id
+            });
+        }
+        function addNew(note){
+            return $http({
+                method: "POST",
+                url: '/notes',
+                data: note
+            })
+        }
+        return {
+            get: getAll,
+            delete: deleteExisting,
+            post: addNew
+        }
     }
 }());
+
+

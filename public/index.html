@@ -9,6 +9,7 @@
     <!--Including library scripts-->
     <script src="assets/libs/angular.js"></script>
     <script src="assets/libs/masonry.pkgd.js"></script>
+    <script src="assets/libs/angular-resource.js"></script>
 
     <!--Including application scripts-->
     <script src="app/modules/app.module.js"></script>
@@ -32,7 +33,7 @@
         </div>
         <div class="notes" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".note"}'>
             <div class="note" ng-repeat="note in notes.items" style="background-color: {{note.color}};" masonry-note>
-                <span class="delete-note" ng-click="notes.delete($index)"> × </span>
+                <span class="delete-note" ng-click="notes.delete(note)"> × </span>
                 <p>{{note.text}}</p>
             </div>
         </div>

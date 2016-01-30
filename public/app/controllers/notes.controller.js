@@ -19,7 +19,6 @@
             .get()
             .then(function(response){
                 notes.items = response.data.notes;
-                console.log(notes.items);
             })
             .catch(function(error){
                 console.log(error);
@@ -33,9 +32,10 @@
 
         notes.delete = function(note){
             notes.items.splice(notes.items.indexOf(note), 1);
-            apiService.delete(note.id)
+
+            apiService.delete(note._id)
                 .then(function(response){
-                    console.log(response);
+                    console.log(response.data.message);
                 })
                 .catch(function(error){
                     console.log(error);
@@ -45,7 +45,7 @@
 
         notes.add = function(){
             var newNote = {
-                id: new Date(),
+                _id: new Date(),
                 text: notes.editor.text,
                 color: colorService.getRandom()
             };
@@ -54,7 +54,7 @@
                 notes.items.unshift(newNote);
                 apiService.post(newNote)
                     .then(function(response){
-                        console.log(response);
+                        console.log(response.data.message);
                     })
                     .catch(function(error){
                         console.log(error);

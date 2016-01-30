@@ -11,9 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.9",
-    "angular-resource": "^1.4.9",
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "masonry-layout": "^4.0.0"
+    "masonry-layout": "^4.0.0",
+    "mongodb": "^2.1.4"
   }
 }

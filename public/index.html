@@ -26,10 +26,14 @@
         </div>
     </header>
     <main ng-controller="NotesController as notes">
+
+        <!-- Notes editor template -->
         <div class="notes-editor">
             <textarea class="notes-editor-input" placeholder="{{notes.editor.placeholder}}" ng-model="notes.editor.text" cols="30" rows="5"></textarea>
             <button class="notes-editor-button" ng-click="notes.add()">Add</button>
         </div>
+
+        <!-- Notes template -->
         <div class="notes" masonry='{ "transitionDuration" : "0.4s" , "itemSelector" : ".note"}'>
             <div class="note" ng-repeat="note in notes.items" style="background-color: {{note.color}};" masonry-note>
                 <span class="delete-note" ng-click="notes.delete(note)"> × </span>

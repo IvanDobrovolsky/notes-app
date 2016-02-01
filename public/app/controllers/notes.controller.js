@@ -6,12 +6,17 @@
         .controller('NotesController', ['apiService', 'colorService', NotesController]);
 
 
-
     function NotesController(apiService, colorService){
 
         var notes = this;
 
+        //Notes editor model
+        notes.editor = {
+            placeholder: "Enter new note here...",
+            text: ""
+        };
 
+        //Notes items model
         notes.items = [];
 
         //Getting notes from backend and appending to the model
@@ -24,16 +29,15 @@
                 console.log(error);
             });
 
-        notes.editor = {
-            placeholder: "Enter new note here...",
-            text: ""
-        };
-
 
         notes.delete = function(note){
+
+            //Deleting the note from angular model
             notes.items.splice(notes.items.indexOf(note), 1);
 
-            apiService.delete(note._id)
+            //Deleting the note from backend
+            apiService
+                .delete(note._id)
                 .then(function(response){
                     console.log(response.data.message);
                 })
@@ -44,6 +48,7 @@
         };
 
         notes.add = function(){
+
             var newNote = {
                 _id: new Date(),
                 text: notes.editor.text,
@@ -51,14 +56,21 @@
             };
 
             if(notes.editor.text){
+
+                //Appending the note to angular model
                 notes.items.unshift(newNote);
-                apiService.post(newNote)
+
+                //Posting the note to backend
+                apiService
+                    .post(newNote)
                     .then(function(response){
                         console.log(response.data.message);
                     })
                     .catch(function(error){
                         console.log(error);
                     });
+
+                //Clear notes editor after adding a note
                 notes.editor.text = "";
             }
 

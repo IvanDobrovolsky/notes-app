@@ -1,6 +1,12 @@
 (function() {
     "use strict";
 
+    /**
+    * @description masonry and masonry-note directives implement interactive animation
+     *@link  http://masonry.desandro.com/ Masonry website
+     *@link  https://github.com/klederson/angular-masonry-directive Masonry angular directive implementation
+    */
+
     angular
         .module('notes')
         .directive('masonry', function($timeout) {
@@ -47,27 +53,28 @@
                     scope.update();
                 }
             };
-    }).directive('masonryNote', function() {
-        return {
-            restrict: 'A',
-            link: function(scope, elem) {
-                elem.css('visibility', 'hidden');
-                var master = elem.parent('*[masonry]:first').scope(),
-                    update = master.update,
-                    removeBrick = master.removeBrick,
-                    appendBricks = master.appendBricks;
-                if (update) {
-                    elem.ready(update);
-                }
-                if (appendBricks) {
-                    appendBricks(elem)
-                }
-                scope.$on('$destroy', function() {
-                    if (removeBrick) {
-                        removeBrick();
+    })
+        .directive('masonryNote', function() {
+            return {
+                restrict: 'A',
+                link: function(scope, elem) {
+                    elem.css('visibility', 'hidden');
+                    var master = elem.parent('*[masonry]:first').scope(),
+                        update = master.update,
+                        removeBrick = master.removeBrick,
+                        appendBricks = master.appendBricks;
+                    if (update) {
+                        elem.ready(update);
                     }
-                });
-            }
+                    if (appendBricks) {
+                        appendBricks(elem)
+                    }
+                    scope.$on('$destroy', function() {
+                        if (removeBrick) {
+                            removeBrick();
+                        }
+                    });
+                }
         };
     });
 })();

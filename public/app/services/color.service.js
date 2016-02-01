@@ -8,6 +8,10 @@
 
     function colorServiceFactory(){
 
+        /**
+         * @function For generation random color value
+         * @return Object color (hex value)
+         */
         function getRandomColor(){
             var letters = '0123456789ABCDEF'.split('');
             var color = '#';

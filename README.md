@@ -5,5 +5,5 @@ To run the app you need to have MongoDB, Node.js and nodemon installed.
 
 Getting started:
   1. npm install
-  2. npm npm run
+  2. npm start
 
